@@ -1,0 +1,145 @@
+
+<body>
+    <h1>PURCHASE BILL</h1>
+
+
+    <label for="id">ID</label>
+    <input [(ngModel)]="objPO.id"/>
+    <br>
+    <br>
+    
+<h2>Date </h2>
+<mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="objPO.date">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+   <br> 
+   <br> 
+
+   <h4>Supplier Details</h4>
+   <br> 
+   <mat-form-field>
+    <mat-label>SUPPLIER NAME</mat-label>
+     <mat-select > 
+      <!-- <mat-option placeholder="select"[(ngModel)]="objSup.supplierId"></mat-option>  -->
+        <mat-option *ngFor="let SupplierDetails of objSup"[value]="SupplierDetails.supplierId">{{SupplierDetails.supplierName}}</mat-option>
+    </mat-select> 
+   </mat-form-field> 
+   &nbsp;&nbsp;
+    <button><a routerLink="/Open">Open</a> </button>  
+   
+   &nbsp;
+   <!-- <button mat-button (click)="Open()">Open</button>  -->
+
+
+   <!-- <label >SupplierName</label>
+   <input type="text" [(ngModel)]="objSup.SupplierName"/>
+   &nbsp;&nbsp;
+
+   <label >Email</label>
+   <input type="text" [(ngModel)]="objSup.Email"/>
+   &nbsp;&nbsp;
+
+   <label >PhoneNumber</label>
+   <input type="text" [(ngModel)]="objSup.PhoneNumber"/>
+   &nbsp;&nbsp;&nbsp;   
+
+    <button (click)="Save()">Save</button>  -->
+   
+   <br> 
+   <br>  
+
+  <!-- <h3>Supplier ID</h3>
+<mat-form-field appearance="fill">
+  <mat-label>id</mat-label>
+  <mat-select matNativeControl required  [(ngModel)]="objPO.supplierid" >
+    <mat-option type="string" value="1">1</mat-option>
+    <mat-option type="string" value="2">2</mat-option>
+    <mat-option type="string" value="3">3</mat-option>
+    <mat-option type="string" value="4">4</mat-option>
+  </mat-select>
+</mat-form-field>  -->
+
+   <!--  <label for="date">DATE</label
+    <input [(ngModel)]="objPO.date"/>
+    <br>
+    <br> -->
+
+    <!-- <label for="supplierid">SUPPLIERID</label>
+    <input type="number" [(ngModel)]="objPO.supplierid"/>
+    <br>
+    <br> -->
+
+    
+    <h3>ITEM DETAILS</h3>
+
+    <label for="id">ID</label>
+    <input type="number" [(ngModel)]="objItem.id"/>
+
+    &nbsp;&nbsp;&nbsp;
+
+
+    <label for="itemid">ITEMID</label>
+    <input type="number" [(ngModel)]="objItem.itemId"/>
+
+    &nbsp;&nbsp;&nbsp;
+
+    <label for="quantity">QUANTITY</label>
+    <input type="number" [(ngModel)]="objItem.quantity"/>
+
+    &nbsp;&nbsp;&nbsp;
+
+    <label for="unitprice">UNITPRICE</label>
+    <input type="number" [(ngModel)]="objItem.unitprice"/>
+
+    &nbsp;&nbsp;&nbsp;
+
+    <label for="total">TOTAL</label>
+    <input type="number"  [(ngModel)]="objItem.total"/>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <button (click)="Add()">Add</button>
+
+    <br>
+    <br>
+
+   <table style="width:100%" border="3">
+    <tr>
+        <th>id</th>
+        
+        <th>itemid</th>
+        <th>quantity</th>
+        <th>unitprice</th>
+        <th>total</th>
+        <th>Action</th>
+    </tr>
+
+
+    <tr
+        *ngFor="let data of objPO.itemDetails;let i=index">
+        <td>{{data.id}}</td>
+   
+        <td>{{data.itemId}}</td>
+        <td>{{data.quantity}}</td> 
+        <td>{{data.unitprice}}</td>
+        <td>{{data.total}}</td>
+        <td>
+            <button (click)="Edit(i)">Edit</button>
+            <button (click)="Delete(i)">Delete</button>
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+
+<button style="position:absolute;right: 100px" (click)="Submit()">Submit</button>
+
+
+
+
+   
+</body>
